@@ -1,0 +1,4 @@
+* text=auto
+*.bsl text eol=crlf
+*.xml text eol=crlf
+*.md text eol=crlf
