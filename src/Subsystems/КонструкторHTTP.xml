@@ -17,7 +17,6 @@
 			<Picture/>
 			<Content>
 				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.КонструкторHTTP</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.КонструкторHTTPПолныеПрава</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.КонструкторHTTPЗапроса</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.КонструкторHTTPСессии</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.ОбработчикHTTPОтвета</xr:Item>
