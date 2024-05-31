@@ -36,7 +36,7 @@
 			<Synonym>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Конструктор HTTP</v8:content>
+					<v8:content>КонструкторHTTP</v8:content>
 				</v8:item>
 			</Synonym>
 			<Comment>Обёртка для работы с КоннекторHTTP в формате текучих выражений</Comment>
