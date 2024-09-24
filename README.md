@@ -2,8 +2,6 @@
 
 КонструкторHTTP - обёртка для работы с [КоннекторHTTP](https://github.com/vbondarevsky/Connector) в формате текучих выражений.
 
-Включает в себя [Конструктор HTTP-сессии](/docs/session.md),[Конструктор HTTP-запроса](/docs/request.md) и [Обработчик HTTP-ответа](/docs/response.md).
-
 ## Примеры
 GET https://jsonplaceholder.typicode.com/posts?userId=1
 
@@ -21,12 +19,36 @@ GET https://jsonplaceholder.typicode.com/posts?userId=1
 POST https://jsonplaceholder.typicode.com/posts
 
 ```bsl
-ТелоЗапроса = Новый Структура("title,body,userId", "foo", "bar", 1);
+Данные = Новый Структура("title,body,userId", "foo", "bar", 1);
 
 Результат = КонструкторHTTP.Запрос()
     .МетодPOST().Сервер("jsonplaceholder.typicode.com").АдресРесурса("posts")
-    .ТелоЗапроса(ТелоЗапроса, Истина)
+    .ТелоЗапроса(Данные, Истина)
     .ДобавитьЗаголовок("Content-Type", "application/json;charset=utf-8")
+    .Отправить();
+
+Если НЕ Результат.КодСостоянияУспешно() Тогда
+    ОписаниеОшибки = Результат.ТелоОтветаКакИсключение();
+    ВызватьИсключение(ОписаниеОшибки);
+КонецЕсли;
+```
+
+POST https://jsonplaceholder.typicode.com/posts (с использованием параметров запроса)
+
+```bsl
+Параметры = КонструкторHTTP.ПараметрыЗапроса();
+Параметры.Метод = КонструкторHTTP.МетодPOST();
+Параметры.Сервер = "jsonplaceholder.typicode.com";
+Параметры.АдресРесурса = "posts";
+
+Данные = Новый Структура("title,body,userId", "foo", "bar", 1);
+
+Заголовки = Новый Соответствие;
+Заголовки.Вставить("Content-Type", "application/json;charset=utf-8");
+
+Результат = КонструкторHTTP.Запрос( , Параметры)
+    .ТелоЗапроса(ТелоЗапроса, Истина)
+    .ДобавитьЗаголовки(Заголовки)
     .Отправить();
 
 Если НЕ Результат.КодСостоянияУспешно() Тогда
